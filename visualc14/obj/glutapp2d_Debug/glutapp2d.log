@@ -1,0 +1,13 @@
+﻿  app_main.cpp
+  app_window.cpp
+  glut_window.cpp
+  gs.cpp
+  gs_color.cpp
+  gs_image.cpp
+  gs_mat.cpp
+  gs_vec.cpp
+  ogl_tools.cpp
+  square.cpp
+  Generating Code...
+  glutapp2d.vcxproj -> C:\Users\Patrick Tran\Desktop\glutapp2d\glutapp2d\visualc14\obj\glutapp2d_Debug\glutapp2d.exe
+          1 file(s) copied.
