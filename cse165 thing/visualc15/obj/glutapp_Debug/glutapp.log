@@ -1,0 +1,23 @@
+﻿  App.cpp
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\runnyboiandbaddudes.h(120): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\runnyboiandbaddudes.h(127): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\runnyboiandbaddudes.h(133): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(31): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(32): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(60): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(72): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(85): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(87): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(113): warning C4018: '<': signed/unsigned mismatch
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(114): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(119): warning C4018: '<': signed/unsigned mismatch
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(121): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(123): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(125): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(126): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(127): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(131): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\patrick tran\documents\visual studio 2015\projects\consoleapplication16\app.cpp(151): warning C4244: 'argument': conversion from 'double' to 'DWORD', possible loss of data
+  glutapp.vcxproj -> C:\Users\Patrick Tran\Documents\Visual Studio 2015\Projects\ConsoleApplication16\visualc15\obj\glutapp_Debug\glutapp.exe
+  glutapp.vcxproj -> obj\glutapp_Debug\glutapp.pdb (Full PDB)
