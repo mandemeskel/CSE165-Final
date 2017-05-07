@@ -10,8 +10,8 @@
 #endif
 class RunnyBoiAndBadDudes {
 	public:
-
-
+		RunnyBoiAndBadDudes();
+		RunnyBoiAndBadDudes(int, int,bool);
 		float time;
 		float acceleration;
 		float xCoord;
@@ -30,40 +30,13 @@ class RunnyBoiAndBadDudes {
 
 
 		void draw();
-		void setXvel();
-		void setYvel();
 		void setXvel(float);
 		void setYvel(float);
 		void setXcoord();
 		void setYcoord();
+		void setAcceleration(float);
 
-
-		RunnyBoiAndBadDudes() {//for runny boi
-			xinitial = 0;
-			xCoord = -0.50;
-			yCoord = 0.0;
-			midAir = false;
-			xVelocity = 0.0;
-			yVelocity = 0.0;
-			time = 0.0;
-			acceleration = -9.8;
-			triangle = false;
-			currentfloor = 0.0;
-		}
-
-
-		RunnyBoiAndBadDudes(int a,int b) {// a is the number in the chain and b is the chain length
-			xinitial = 1.5 + ((a - 1)*0.15);
-			yCoord = 0.0;
-			collision = true;
-			xVelocity = 0.0;
-			yVelocity = 0.0;
-			time = 0.0;
-			acceleration = -.60;
-			triangle = true;
-			chain = b;
-		}
-
+		
 
 		~RunnyBoiAndBadDudes();
 		

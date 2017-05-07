@@ -9,10 +9,9 @@
 using namespace std;
 
 deque<RunnyBoiAndBadDudes> badBoiz;//double ended thingy to hold bad dudes
-
+deque<RunnyBoiAndBadDudes> boxs;
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
 	runnyBoi = new RunnyBoiAndBadDudes();// make the dude
-    // Initialize state variables
 	currentFloor = 0.0;
 	stopGame = false;
 }
@@ -26,17 +25,18 @@ void App::draw() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
 	glBegin(GL_LINES);//temp line for the floor
-	glVertex2f(-1, 0-.15);
-	glVertex2f(1, 0-.15);
+	glVertex2f(-1, 0 );
+	glVertex2f(1, 0 );
 	glEnd();
-	
+
 	
 	for (int i = 0; i < badBoiz.size(); i++) {//draw the bad guys
 		badBoiz[i].draw();
 	}
-
+	for (int i = 0; i < boxs.size(); i++) {
+		boxs[i].draw();
+	}
 	runnyBoi->draw();//draw the main guy
     // We have been drawing everything to the back buffer
     // Swap the buffers to see the result of what we drew
@@ -45,7 +45,7 @@ void App::draw() {
 }
 
 void App::keyPress(unsigned char key) {
-    if (key == 27){
+    if (key == 27){//esc
         // Exit the app when Esc key is pressed
         delete this;
         exit(0);
@@ -56,99 +56,165 @@ void App::keyPress(unsigned char key) {
 			runnyBoi->setYvel(2);
 		}
 	}
-	else if (key == 48) {
-		currentFloor += 0.01;
-		std::cout << currentFloor << std::endl;
-	}
-	else if (key == 49) {
-		RunnyBoiAndBadDudes badguy(0, 1);
+	else if (key == 49) {//1
+		RunnyBoiAndBadDudes badguy(1, 1,1);
 		badguy.acceleration = 0;
 		badguy.setXvel(-1.5);
 		badguy.xCoord = 1.5;
 		badBoiz.push_back(badguy);
-		std::cout << "made a dude" << std::endl;
 	}
-	else if (key == 50) {
-		currentFloor -= 0.01;
+	else if (key == 52) {//4
+		for (int i = 1; i < 3; i++) {
+			RunnyBoiAndBadDudes badguy(i, 2,1);
+			badguy.acceleration = 0;
+			badguy.setXvel(-1.5);
+			badguy.xCoord = 1.5;
+			badBoiz.push_back(badguy);
+		}
+	}
+	else if (key == 55) {//7
+		for (int i = 1; i < 4; i++) {
+			RunnyBoiAndBadDudes badguy(i, 3,1);
+			badguy.acceleration = 0;
+			badguy.setXvel(-1.5);
+			badguy.xCoord = 1.5;
+			badBoiz.push_back(badguy);
+		}
+	}
+	else if (key == 50) {//2
+			RunnyBoiAndBadDudes box(1,1,0);
+			box.acceleration = 0;
+			box.setXvel(-1.5);
+			box.xCoord = 1.5;
+			boxs.push_back(box);
+	}
+	else if (key == 53) {//5
+		for (int i = 1; i < 3; i++) {
+			RunnyBoiAndBadDudes box(i, 2, 0);
+			box.acceleration = 0;
+			box.setXvel(-1.5);
+			box.xCoord = 1.5;
+			boxs.push_back(box);
+		}
+	}
+	else if (key == 56) {//2
+		for (int i = 1; i < 4; i++) {
+			RunnyBoiAndBadDudes box(i, 3, 0);
+			box.acceleration = 0;
+			box.setXvel(-1.5);
+			box.xCoord = 1.5;
+			boxs.push_back(box);
+		}
+	}
+	else if (key == 57) {//9
+		currentFloor += 0.01;
+		runnyBoi->currentfloor = currentFloor;
 		std::cout << currentFloor << std::endl;
 	}
-	else if (key == 51) {
+	else if (key == 54) {//6
+		currentFloor -= 0.01;
+		runnyBoi->currentfloor = currentFloor;
+		std::cout << currentFloor << std::endl;
+	}
+	else if (key == 51) {//3
 		stopGame = false;
 	}
 }
 
 void App::idle(){
 	if (stopGame == false) {
-		runnyBoi->currentfloor = currentFloor;
-		if (runnyBoi->midAir == true)//if main guy is off the "ground" 
-			if (currentFloor + ((((runnyBoi->yVelocity*(runnyBoi->time + .1)) + (0.5*runnyBoi->acceleration)*(runnyBoi->time + .1)*(runnyBoi->time + .1))) / 1.3) < currentFloor)//prevents him from clipping the floor set at Y=0;
-				runnyBoi->time += .001;
-			else
-				runnyBoi->time += .001;
 
-		runnyBoi->setYcoord();
+		//runnyBoi->currentfloor = currentFloor;
+		if (runnyBoi->midAir == true ) //if main guy is off the "ground"
+			runnyBoi -> time += 0.001;
+		
 		if (runnyBoi->yCoord < currentFloor) {//make sure he doesnt fall through the floor( I set floor at Y=0)
+			runnyBoi->midAir = false;
 			runnyBoi->time = 0;
 			runnyBoi->yCoord = currentFloor;
-			runnyBoi->midAir = false;
 		}
+		runnyBoi->setYcoord();
 
 
 
-
-		/*
+		/**
 		srand(clock());//randomize
 		int chain = rand() % 4;//pick a number between 0 and 3 inclusive
 		if ((badBoiz.size()>0&&( badBoiz.back().xCoord<(badBoiz.back().xinitial-((badBoiz.back().chain+1)*.15)))) ||badBoiz.size()==0) { //some crazy ass statement for making sure things dont overlap and to ensure there is a free space after a 3 chain
-			for (int i = 0; i < chain; i++) {//make a chain of enemies
+			for (int i = 1; i < chain+1; i++) {//make a chain of enemies
 				RunnyBoiAndBadDudes badguy(i, chain);
-				badguy.acceleration = 0;
-				badguy.setXvel(-0.1);
+				badguy.setXvel(-1);
 				badguy.xCoord = 1;
 				badBoiz.push_back(badguy);
 			}
 		}
-
 		*/
+		
+
 		for (int i = 0; i < badBoiz.size(); i++) {//loop and set the coordinates for the next frame for each guy
 			badBoiz[i].time += .001;
 			badBoiz[i].setXcoord();
 		}
 
+
+		for (int i = 0; i < boxs.size(); i++) {//loop and set the coordinates for the next frame for each guy
+			boxs[i].time += .001;
+			boxs[i].setXcoord();
+		}
+
+
 		float deltaX;
-		for (int i = 0; i < badBoiz.size(); i++) {
-			if ((badBoiz[i].xCoord <= runnyBoi->xCoord + .15 && badBoiz[i].xCoord >= runnyBoi->xCoord) || (badBoiz[i].xCoord + 0.15 >= runnyBoi->xCoord && badBoiz[i].xCoord + 0.15 <= runnyBoi->xCoord + 0.15)) {
+		for (int i = 0; i < badBoiz.size(); i++) {//check for hitting a triangle
+			if ( ((badBoiz[i].xCoord <= runnyBoi->xCoord + .15 && badBoiz[i].xCoord >= runnyBoi->xCoord) || (badBoiz[i].xCoord + 0.15 >= runnyBoi->xCoord && badBoiz[i].xCoord + 0.15 <= runnyBoi->xCoord + 0.15)) ) {//if x intersection
 				float slope = sqrt(3);
 				float b = badBoiz[i].yCoord;
-				deltaX = -.37 - badBoiz[i].xCoord;
-				if (badBoiz[i].xCoord + .075 < runnyBoi->xCoord) {
-					slope = -sqrt(3);
-					b = .13 + badBoiz[i].yCoord;
-					deltaX = (runnyBoi->xCoord - badBoiz[i].xCoord - .075);
+				deltaX = -.35 - badBoiz[i].xCoord;
+				if (deltaX <= 0.075) {
+					slope = sqrt(3);
+					b = badBoiz[i].yCoord;
 				}
-				float line = slope*(deltaX)+b;
-				if (deltaX >= .075)
-					line = .13 + badBoiz[i].yCoord;
-				//std::cout << "we have X contact at" << badBoiz[i].xCoord << "\n" <<"deltax"<<-.37-badBoiz[i].xCoord<<"\n";
-				//std::cout << " line equation is y=" << slope << "x+" << b << std::endl;
-				//std::cout << "box y coord is " << runnyBoi->yCoord << std::endl;
-				//std::cout << "triange y coord is " << line << std::endl;
-				//std::cout << deltaX << std::endl;
-
-				if (line <= runnyBoi->yCoord + .001 && line >= runnyBoi->yCoord - 0.001) {
+				else if (deltaX >= (.15 + 0.075) ){
+					slope = -sqrt(3);
+					b = badBoiz[i].yCoord;
+				}
+				else {
+					slope = 0;
+					b = badBoiz[i].yCoord + (sqrt(3)*0.075);
+				}
+				float line = (slope*(deltaX))+b;
+				if ((line >= runnyBoi->yCoord) ) {//theres a hit
 					redraw();
 					stopGame = true;
 				}
 			}
 
 		}
-
-		if (badBoiz.size() > 0 && badBoiz[0].xCoord < -2)//if theyre off the screen remove them from the queue
+		
+		for (int i = 0; i < boxs.size(); i++) {
+			
+			if ((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord > runnyBoi->xCoord + .149) && (runnyBoi->yCoord >= boxs[i].yCoord && runnyBoi->yCoord < boxs[i].yCoord + 0.15)) {
+				redraw();//if it gets hit from the side
+				stopGame = true;
+			}
+			else if (((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord >= runnyBoi->xCoord) || (boxs[i].xCoord + .15 >= runnyBoi->xCoord && boxs[i].xCoord + .15 <= runnyBoi->xCoord + .15))) {
+				currentFloor = boxs[i].yCoord + .15;
+				if (runnyBoi->yCoord < boxs[i].yCoord + .15) {
+					runnyBoi->currentfloor = currentFloor;//raise the floor for jumping onto another box
+					break;
+				}
+			}
+				
+		}
+		
+		
+		if (badBoiz.size() > 0 && badBoiz[0].xCoord < -1.25)//if theyre off the screen remove them from the queue
 			badBoiz.pop_front();
 
+		if (boxs.size() > 0 && boxs[0].xCoord < -1.25)//if theyre off the screen remove them from the queue
+			boxs.pop_front();
 
 		redraw();// redraw
-		Sleep(.5);// Windows specific Sleep timer, use this to control the render rate of the program
+		//Sleep(10);// Windows specific Sleep timer, use this to control the render rate of the program
 	}
 }
 
