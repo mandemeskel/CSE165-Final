@@ -2,6 +2,8 @@
 #include "App.h"
 #include <math.h>
 #include<time.h>
+#include <ctime>
+#include <cstdio>
 #include<iostream>
 #include<Windows.h>
 #include<deque>
@@ -10,10 +12,17 @@ using namespace std;
 
 deque<RunnyBoiAndBadDudes> badBoiz;//double ended thingy to hold bad dudes
 deque<RunnyBoiAndBadDudes> boxs;
+
+clock_t beginTime;
+
+float noSpawnTime;
+
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
 	runnyBoi = new RunnyBoiAndBadDudes();// make the dude
 	currentFloor = 0.0;
 	stopGame = false;
+	beginTime = clock();
+	noSpawnTime = rand() % 1 + 0.6;
 }
 
 void App::draw() {
@@ -53,7 +62,7 @@ void App::keyPress(unsigned char key) {
 	else if (key == 32) {//spacebar
 		if (runnyBoi->midAir == false) {
 			runnyBoi->midAir = true;
-			runnyBoi->setYvel(2);
+			runnyBoi->setYvel(3);
 		}
 	}
 	else if (key == 49) {//1
@@ -116,8 +125,30 @@ void App::keyPress(unsigned char key) {
 		runnyBoi->currentfloor = currentFloor;
 		std::cout << currentFloor << std::endl;
 	}
+	else if (key == 114) {// r, restarts game
+	//	App::~App();
+	//	App::App("MyApp", 50, 50, 600, 600);
+	}
 	else if (key == 51) {//3
 		stopGame = false;
+	}
+}
+
+
+void timeToSpawn() {
+	//cout << "Time to spawn is " << noSpawnTime;
+	//cout << "Time difference is " << double(clock() - beginTime);
+	if ((double(clock() - beginTime) / CLOCKS_PER_SEC) >= noSpawnTime) {
+		cout << "Spawning triangle" << endl;
+		int chain = rand() % 3 + 2;
+		for (int i = 1; i < chain; i++) {
+			RunnyBoiAndBadDudes badguy(i, chain, true);
+			badguy.setXvel(-1);
+			badguy.xCoord = 1;
+			badBoiz.push_back(badguy);
+		}
+		beginTime = clock();
+		noSpawnTime = rand() % 1 + 0.55;
 	}
 }
 
@@ -149,6 +180,7 @@ void App::idle(){
 			}
 		}
 		*/
+		timeToSpawn();
 		
 
 		for (int i = 0; i < badBoiz.size(); i++) {//loop and set the coordinates for the next frame for each guy
