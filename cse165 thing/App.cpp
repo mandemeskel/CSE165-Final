@@ -8,10 +8,13 @@
 #include<Windows.h>
 #include<deque>
 #include<stdlib.h>
+#include "Scoreboard.h"
+#include <string>
 using namespace std;
 
 deque<RunnyBoiAndBadDudes> badBoiz;//double ended thingy to hold bad dudes
 deque<RunnyBoiAndBadDudes> boxs;
+
 
 clock_t beginTime;
 
@@ -23,6 +26,7 @@ App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w,
 	stopGame = false;
 	beginTime = clock();
 	noSpawnTime = rand() % 1 + 0.6;
+	score = new Scoreboard();
 }
 
 void App::draw() {
@@ -39,7 +43,10 @@ void App::draw() {
 	glVertex2f(1, 0 );
 	glEnd();
 
-	
+	//Draws the score
+	drawScore("Score : " + to_string(score.getScore()), -45, 35);
+
+
 	for (int i = 0; i < badBoiz.size(); i++) {//draw the bad guys
 		badBoiz[i].draw();
 	}
@@ -126,6 +133,7 @@ void App::keyPress(unsigned char key) {
 		std::cout << currentFloor << std::endl;
 	}
 	else if (key == 114) {// r, restarts game
+		score.resetScore();
 	//	App::~App();
 	//	App::App("MyApp", 50, 50, 600, 600);
 	}
@@ -149,6 +157,20 @@ void timeToSpawn() {
 		}
 		beginTime = clock();
 		noSpawnTime = rand() % 1 + 0.55;
+	}
+}
+
+Scoreboard &App::getScoreBoard() {
+	return score;
+}
+
+void App::drawScore(string s, int x, int y) {
+	glColor3f(0.5, 0, 1);
+
+	glLoadIdentity();
+	glRasterPos2i(x, y);
+	for (int i = 0; i < s.length(); i++) {
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, s[i]);
 	}
 }
 
@@ -217,6 +239,7 @@ void App::idle(){
 				if ((line >= runnyBoi->yCoord) ) {//theres a hit
 					redraw();
 					stopGame = true;
+					score.flipState();
 				}
 			}
 
@@ -227,6 +250,7 @@ void App::idle(){
 			if ((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord > runnyBoi->xCoord + .149) && (runnyBoi->yCoord >= boxs[i].yCoord && runnyBoi->yCoord < boxs[i].yCoord + 0.15)) {
 				redraw();//if it gets hit from the side
 				stopGame = true;
+				score.flipState();
 			}
 			else if (((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord >= runnyBoi->xCoord) || (boxs[i].xCoord + .15 >= runnyBoi->xCoord && boxs[i].xCoord + .15 <= runnyBoi->xCoord + .15))) {
 				currentFloor = boxs[i].yCoord + .15;
@@ -245,6 +269,7 @@ void App::idle(){
 		if (boxs.size() > 0 && boxs[0].xCoord < -1.25)//if theyre off the screen remove them from the queue
 			boxs.pop_front();
 
+		
 		redraw();// redraw
 		//Sleep(10);// Windows specific Sleep timer, use this to control the render rate of the program
 	}

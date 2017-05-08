@@ -2,12 +2,14 @@
 #define App_hpp
 #include "GlutApp.h"
 #include "RunnyBoiAndBadDudes.h"
+#include <string>
+#include "Scoreboard.h"
 
 class App: public GlutApp {
+	// Maintain app state here
 	RunnyBoiAndBadDudes* runnyBoi;
 	bool stopGame;
-    // Maintain app state here
-	
+	Scoreboard score;
    
 public:
     // Constructor, to initialize state
@@ -15,7 +17,9 @@ public:
 	float currentFloor;
     // These are the events we want to handle
     void draw();
+	void drawScore(std::string s, int x, int y);
     void keyPress(unsigned char key);
+	Scoreboard& getScoreBoard();
     
     void idle();
     
