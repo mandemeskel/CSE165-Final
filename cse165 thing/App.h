@@ -2,12 +2,14 @@
 #define App_hpp
 #include "GlutApp.h"
 #include "RunnyBoiAndBadDudes.h"
+#include "runnyboi.h"
+#include "BadDude.h"
 #include <string>
 #include "Scoreboard.h"
 
 class App: public GlutApp {
 	// Maintain app state here
-	RunnyBoiAndBadDudes* runnyBoi;
+	runnyboi* runnyBoi;
 	bool stopGame;
 	Scoreboard score;
    

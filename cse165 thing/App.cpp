@@ -12,8 +12,8 @@
 #include <string>
 using namespace std;
 
-deque<RunnyBoiAndBadDudes> badBoiz;//double ended thingy to hold bad dudes
-deque<RunnyBoiAndBadDudes> boxs;
+deque<BadDude> badBoiz;//double ended thingy to hold bad dudes
+deque<runnyboi> boxs;
 
 
 clock_t beginTime;
@@ -21,7 +21,7 @@ clock_t beginTime;
 float noSpawnTime;
 
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
-	runnyBoi = new RunnyBoiAndBadDudes();// make the dude
+	runnyBoi = new runnyboi();// make the dude
 	currentFloor = 0.0;
 	stopGame = false;
 	beginTime = clock();
@@ -73,7 +73,7 @@ void App::keyPress(unsigned char key) {
 		}
 	}
 	else if (key == 49) {//1
-		RunnyBoiAndBadDudes badguy(1, 1,1);
+		BadDude badguy(1, 1);
 		badguy.acceleration = 0;
 		badguy.setXvel(-1.5);
 		badguy.xCoord = 1.5;
@@ -81,14 +81,14 @@ void App::keyPress(unsigned char key) {
 	}
 	else if (key == 52) {//4
 		for (int i = 1; i < 3; i++) {
-			RunnyBoiAndBadDudes badguy(i, 2,1);
+			BadDude badguy(i, 2);
 			badguy.acceleration = 0;
 			badguy.setXvel(-1.5);
 			badguy.xCoord = 1.5;
 			badBoiz.push_back(badguy);
 		}
 	}
-	else if (key == 55) {//7
+	/*else if (key == 55) {//7
 		for (int i = 1; i < 4; i++) {
 			RunnyBoiAndBadDudes badguy(i, 3,1);
 			badguy.acceleration = 0;
@@ -122,6 +122,7 @@ void App::keyPress(unsigned char key) {
 			boxs.push_back(box);
 		}
 	}
+	*/
 	else if (key == 57) {//9
 		currentFloor += 0.01;
 		runnyBoi->currentfloor = currentFloor;
@@ -150,7 +151,7 @@ void timeToSpawn() {
 		cout << "Spawning triangle" << endl;
 		int chain = rand() % 3 + 2;
 		for (int i = 1; i < chain; i++) {
-			RunnyBoiAndBadDudes badguy(i, chain, true);
+			BadDude badguy(i, chain);
 			badguy.setXvel(-1);
 			badguy.xCoord = 1;
 			badBoiz.push_back(badguy);

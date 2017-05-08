@@ -5,20 +5,12 @@
 #include"App.h"
 
 RunnyBoiAndBadDudes::RunnyBoiAndBadDudes() {//for runny boi
-	xinitial = 0;
-	xCoord = -0.50;
-	yCoord = 0.0;
-	midAir = false;
-	xVelocity = 0.0;
-	yVelocity = 0.0;
-	time = 0.0;
-	acceleration = -8;
-	triangle = false;
+	
 	currentfloor = 0.0;
 }
 
 
-RunnyBoiAndBadDudes::RunnyBoiAndBadDudes(int a, int b,bool tri) {// a is the number in the chain and b is the chain length
+/*RunnyBoiAndBadDudes::RunnyBoiAndBadDudes(int a, int b,bool tri) {// a is the number in the chain and b is the chain length
 	xinitial = 1.2 + ((a - 1)*0.151);
 	yCoord = 0.0;
 	collision = false;
@@ -29,7 +21,7 @@ RunnyBoiAndBadDudes::RunnyBoiAndBadDudes(int a, int b,bool tri) {// a is the num
 	triangle = tri;
 	chain = b;
 }
-
+*/
 void RunnyBoiAndBadDudes::setXvel(float x=1.0) {
 	xVelocity = x;
 }
@@ -53,7 +45,7 @@ void RunnyBoiAndBadDudes::setAcceleration(float a) {
 	acceleration = a;
 }
 
-void RunnyBoiAndBadDudes::draw() {
+/*void RunnyBoiAndBadDudes::draw() {
 	if (triangle) {//triangle
 		float length = 0.15;
 		float height = (sqrt(3) / 2)*length;
@@ -75,7 +67,7 @@ void RunnyBoiAndBadDudes::draw() {
 		glVertex2f(xCoord + xlength, yCoord);
 		glEnd();
 	}
-}
+}*/
 
 
 RunnyBoiAndBadDudes::~RunnyBoiAndBadDudes(){

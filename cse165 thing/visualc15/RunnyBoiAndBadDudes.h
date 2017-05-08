@@ -11,7 +11,7 @@
 class RunnyBoiAndBadDudes {
 	public:
 		RunnyBoiAndBadDudes();
-		RunnyBoiAndBadDudes(int, int,bool);
+		//RunnyBoiAndBadDudes(){};
 		float time;
 		float acceleration;
 		float xCoord;

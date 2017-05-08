@@ -120,6 +120,8 @@
     <ClCompile Include="RunnyBoiAndBadDudes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\BadDude.h" />
+    <ClInclude Include="..\..\..\runnyboi.h" />
     <ClInclude Include="..\App.h" />
     <ClInclude Include="..\GlutApp.h" />
     <ClInclude Include="RunnyBoiAndBadDudes.h" />
