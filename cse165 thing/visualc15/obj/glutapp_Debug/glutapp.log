@@ -1,20 +1,47 @@
 ﻿  App.cpp
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(110): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(115): warning C4305: '-=': truncation from 'double' to 'float'
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(129): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(154): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(155): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(160): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(161): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(167): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(169): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(171): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(173): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(177): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(182): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(193): warning C4018: '<': signed/unsigned mismatch
-c:\users\patrick tran\documents\visual studio 2015\projects\cse165 thing\app.cpp(200): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  glutapp.vcxproj -> C:\Users\Patrick Tran\Documents\Visual Studio 2015\Projects\cse165 thing\visualc15\obj\glutapp_Debug\glutapp.exe
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(38): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(39): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(53): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(131): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(136): warning C4305: '-=': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(165): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(177): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(187): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(216): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(217): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(222): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(223): warning C4305: '+=': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(229): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(231): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(233): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(235): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(239): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(244): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(256): warning C4018: '<': signed/unsigned mismatch
+c:\users\david\documents\github\cse165-final\cse165 thing\app.cpp(264): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  app_main.cpp
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(38): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(39): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  GlutApp.cpp
+c:\users\david\documents\github\cse165-final\cse165 thing\glutapp.cpp(42): warning C4305: '-=': truncation from 'double' to 'float'
+  RunnyBoiAndBadDudes.cpp
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(38): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\runnyboi.h(39): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\baddude.h(31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\visualc15\runnyboiandbaddudes.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\david\documents\github\cse165-final\cse165 thing\visualc15\runnyboiandbaddudes.cpp(41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  LINK : obj\glutapp_Debug\glutapp.exe not found or not built by the last incremental link; performing full link
+App.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  glutapp.vcxproj -> C:\Users\David\Documents\GitHub\CSE165-Final\cse165 thing\visualc15\obj\glutapp_Debug\glutapp.exe
   glutapp.vcxproj -> obj\glutapp_Debug\glutapp.pdb (Full PDB)

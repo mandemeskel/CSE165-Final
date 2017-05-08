@@ -19,6 +19,7 @@ public:
 	float currentFloor;
     // These are the events we want to handle
     void draw();
+	void MainCalculations();
 	void drawScore(std::string s, int x, int y);
     void keyPress(unsigned char key);
 	Scoreboard& getScoreBoard();
