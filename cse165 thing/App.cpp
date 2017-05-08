@@ -10,6 +10,8 @@
 #include<stdlib.h>
 #include "Scoreboard.h"
 #include <string>
+#include <chrono>
+#include <future>
 using namespace std;
 
 deque<BadDude> badBoiz;//double ended thingy to hold bad dudes
@@ -27,6 +29,7 @@ App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w,
 	beginTime = clock();
 	noSpawnTime = rand() % 1 + 0.6;
 	score = new Scoreboard();
+	score->flipState();
 }
 
 void App::draw() {
@@ -36,16 +39,13 @@ void App::draw() {
     glClearColor(1.0, 1.0, 1.0, 0.0);
     // Set up the transformations stack
     glMatrixMode(GL_MODELVIEW);
+
     glLoadIdentity();
 
 	glBegin(GL_LINES);//temp line for the floor
 	glVertex2f(-1, 0 );
 	glVertex2f(1, 0 );
 	glEnd();
-
-	//Draws the score
-	drawScore("Score : " + to_string(score.getScore()), -45, 35);
-
 
 	for (int i = 0; i < badBoiz.size(); i++) {//draw the bad guys
 		badBoiz[i].draw();
@@ -56,6 +56,10 @@ void App::draw() {
 	runnyBoi->draw();//draw the main guy
     // We have been drawing everything to the back buffer
     // Swap the buffers to see the result of what we drew
+
+	//Draws the score
+	//drawScore("Score : " + to_string(score->getScore()), 80, 80);
+
     glFlush();
     glutSwapBuffers();
 }
@@ -134,7 +138,7 @@ void App::keyPress(unsigned char key) {
 		std::cout << currentFloor << std::endl;
 	}
 	else if (key == 114) {// r, restarts game
-		score.resetScore();
+		score->resetScore();
 	//	App::~App();
 	//	App::App("MyApp", 50, 50, 600, 600);
 	}
@@ -144,6 +148,7 @@ void App::keyPress(unsigned char key) {
 }
 
 
+//Triangle spawner func
 void timeToSpawn() {
 	//cout << "Time to spawn is " << noSpawnTime;
 	//cout << "Time difference is " << double(clock() - beginTime);
@@ -162,13 +167,12 @@ void timeToSpawn() {
 }
 
 Scoreboard &App::getScoreBoard() {
-	return score;
+	return *score;
 }
 
+// (Supposed to) draw the score
 void App::drawScore(string s, int x, int y) {
-	glColor3f(0.5, 0, 1);
 
-	glLoadIdentity();
 	glRasterPos2i(x, y);
 	for (int i = 0; i < s.length(); i++) {
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, s[i]);
@@ -203,7 +207,10 @@ void App::idle(){
 			}
 		}
 		*/
+
+		// Triangle spawner
 		timeToSpawn();
+
 		
 
 		for (int i = 0; i < badBoiz.size(); i++) {//loop and set the coordinates for the next frame for each guy
@@ -240,7 +247,7 @@ void App::idle(){
 				if ((line >= runnyBoi->yCoord) ) {//theres a hit
 					redraw();
 					stopGame = true;
-					score.flipState();
+					score->flipState();
 				}
 			}
 
@@ -251,7 +258,7 @@ void App::idle(){
 			if ((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord > runnyBoi->xCoord + .149) && (runnyBoi->yCoord >= boxs[i].yCoord && runnyBoi->yCoord < boxs[i].yCoord + 0.15)) {
 				redraw();//if it gets hit from the side
 				stopGame = true;
-				score.flipState();
+				score->flipState();
 			}
 			else if (((boxs[i].xCoord <= runnyBoi->xCoord + .15 && boxs[i].xCoord >= runnyBoi->xCoord) || (boxs[i].xCoord + .15 >= runnyBoi->xCoord && boxs[i].xCoord + .15 <= runnyBoi->xCoord + .15))) {
 				currentFloor = boxs[i].yCoord + .15;
@@ -269,8 +276,9 @@ void App::idle(){
 
 		if (boxs.size() > 0 && boxs[0].xCoord < -1.25)//if theyre off the screen remove them from the queue
 			boxs.pop_front();
-
 		
+		
+
 		redraw();// redraw
 		//Sleep(10);// Windows specific Sleep timer, use this to control the render rate of the program
 	}

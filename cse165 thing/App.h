@@ -11,7 +11,7 @@ class App: public GlutApp {
 	// Maintain app state here
 	runnyboi* runnyBoi;
 	bool stopGame;
-	Scoreboard score;
+	Scoreboard* score;
    
 public:
     // Constructor, to initialize state

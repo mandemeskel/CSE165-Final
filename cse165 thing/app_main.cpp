@@ -1,6 +1,10 @@
 #include "App.h"
-#include <thread>
+#include<time.h>
+#include <ctime>
 #include <chrono>
+#include <future>
+
+
 
 int main(int argc, char** argv) {
 	// Initialize GLUT
@@ -10,15 +14,14 @@ int main(int argc, char** argv) {
     // Instantiate a new App
     App* myApp = new App("MyApp", 50, 50, 600, 600);
 
+	Scoreboard score = myApp->getScoreBoard();
+//	auto future = async(score.incrementScore);
+	
 	// Start the app
     myApp->run();
+	
 
-	Scoreboard score = myApp->getScoreBoard();
 
-	while (true) {
-		this_thread::sleep_for(chrono::seconds(1) / 2);
-		score.incrementScore();
-		
-	}
+
 
 }
