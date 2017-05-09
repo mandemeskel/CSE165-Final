@@ -9,7 +9,7 @@
 #else
 #include <GL/gl.h>
 #endif
-
+#include <cmath>
 
 class BadDude : public RunnyBoiAndBadDudes {
 public:

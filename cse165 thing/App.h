@@ -22,10 +22,11 @@ public:
 	void drawScore(std::string s, int x, int y);
     void keyPress(unsigned char key);
 	Scoreboard& getScoreBoard();
-    
+    void startGame();
     void idle();
-    
+    void mouseDown( float mx, float my );
     ~App();
+    
 };
 
 #endif

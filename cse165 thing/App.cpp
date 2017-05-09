@@ -5,18 +5,19 @@
 #include <ctime>
 #include <cstdio>
 #include<iostream>
-#include<Windows.h>
+// #include<Windows.h>
 #include<deque>
 #include<stdlib.h>
 #include "Scoreboard.h"
 #include <string>
 #include <chrono>
 #include <future>
+#include "menu.h"
 using namespace std;
 
 deque<BadDude> badBoiz;//double ended thingy to hold bad dudes
 deque<runnyboi> boxs;
-
+Menu * menu;
 
 clock_t beginTime;
 
@@ -25,11 +26,19 @@ float noSpawnTime;
 App::App(const char* label, int x, int y, int w, int h): GlutApp(label, x, y, w, h){
 	runnyBoi = new runnyboi();// make the dude
 	currentFloor = 0.0;
-	stopGame = false;
+	stopGame = true;
 	beginTime = clock();
 	noSpawnTime = rand() % 1 + 0.6;
 	score = new Scoreboard();
 	score->flipState();
+	menu = new Menu();
+}
+
+// starts game and sets other vars
+void App::startGame() {
+
+	stopGame = false;
+
 }
 
 void App::draw() {
@@ -42,23 +51,31 @@ void App::draw() {
 
     glLoadIdentity();
 
-	glBegin(GL_LINES);//temp line for the floor
-	glVertex2f(-1, 0 );
-	glVertex2f(1, 0 );
-	glEnd();
+	// draw menu
+	menu->draw();
 
-	for (int i = 0; i < badBoiz.size(); i++) {//draw the bad guys
-		badBoiz[i].draw();
-	}
-	for (int i = 0; i < boxs.size(); i++) {
-		boxs[i].draw();
-	}
-	runnyBoi->draw();//draw the main guy
-    // We have been drawing everything to the back buffer
-    // Swap the buffers to see the result of what we drew
+	// don't draw anything else untill the game starts
+	if( !stopGame ) {
 
-	//Draws the score
-	//drawScore("Score : " + to_string(score->getScore()), 80, 80);
+		glBegin(GL_LINES);//temp line for the floor
+		glVertex2f(-1, 0 );
+		glVertex2f(1, 0 );
+		glEnd();
+
+		for (int i = 0; i < badBoiz.size(); i++) {//draw the bad guys
+			badBoiz[i].draw();
+		}
+		for (int i = 0; i < boxs.size(); i++) {
+			boxs[i].draw();
+		}
+		runnyBoi->draw();//draw the main guy
+		// We have been drawing everything to the back buffer
+		// Swap the buffers to see the result of what we drew
+
+		//Draws the score
+		//drawScore("Score : " + to_string(score->getScore()), 80, 80);
+
+	}
 
     glFlush();
     glutSwapBuffers();
@@ -286,4 +303,22 @@ void App::idle(){
 
 App::~App(){
 	delete runnyBoi;//kill him
+}
+
+void App::mouseDown( float mx, float my ) {
+
+	switch( menu->contains( mx, my ) ) {
+
+		case START_GAME:
+			stopGame = false;
+			menu->toggle( true );
+		break;
+		case SHOW_SCOREBOARD:
+
+		break;
+		default:
+
+		break;
+	}
+
 }
