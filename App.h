@@ -12,6 +12,7 @@ class App: public GlutApp {
 	// Maintain app state here
 	runnyboi* runnyBoi;
 	bool stopGame;
+	bool endGame;
 	Scoreboard* score;
 	float noSpawnTime;
 	
@@ -23,12 +24,14 @@ public:
 	float currentFloor;
     // These are the events we want to handle
     void draw();
-	void changeSpawnTime(int t);
+	void changeSpawnTime(float t);
 	void drawScore(std::string s, float x, float y);
     void keyPress(unsigned char key);
 	void resetGame();
-	void timeToSpawn();
+	void timeToSpawnTri();
 	float getSpawnTime();
+
+	void mouseDown(float mx, float my);
     
     void idle();
     

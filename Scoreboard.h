@@ -31,20 +31,16 @@ public:
 		return updateScoreTime;
 	}
 
+	bool getStart() {
+		return start;
+	}
+
 	void flipState() {
 		start = !start;
 	}
 	
-	// Threading not correctly implemented yet
 	void incrementScore() {
-		if (start) {/*
-			double scTime = getTimer();
-			for (double i = 0.0; i < scTime; i += 0.1) {
-					score++;
-					cout << "Score: " << getScore() << endl;
-					this_thread::sleep_for(chrono::milliseconds(10));
-				}
-				*/
+		if (start) {
 			score++;
 			}
 		}

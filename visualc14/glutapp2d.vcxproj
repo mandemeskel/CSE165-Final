@@ -124,19 +124,27 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\App.cpp" />
     <ClCompile Include="..\app_main.cpp" />
     <ClCompile Include="..\app_window.cpp" />
+    <ClCompile Include="..\GlutApp.cpp" />
     <ClCompile Include="..\glut_window.cpp" />
     <ClCompile Include="..\gsim\gs.cpp" />
     <ClCompile Include="..\gsim\gs_color.cpp" />
     <ClCompile Include="..\gsim\gs_image.cpp" />
     <ClCompile Include="..\gsim\gs_mat.cpp" />
     <ClCompile Include="..\gsim\gs_vec.cpp" />
+    <ClCompile Include="..\MyCode.cpp" />
     <ClCompile Include="..\ogl_tools.cpp" />
+    <ClCompile Include="..\RunnyBoiAndBadDudes.cpp" />
     <ClCompile Include="..\square.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\App.h" />
     <ClInclude Include="..\app_window.h" />
+    <ClInclude Include="..\BadCircle.h" />
+    <ClInclude Include="..\BadDude.h" />
+    <ClInclude Include="..\GlutApp.h" />
     <ClInclude Include="..\glut_window.h" />
     <ClInclude Include="..\gsim\gs.h" />
     <ClInclude Include="..\gsim\gs_color.h" />
@@ -146,7 +154,12 @@
     <ClInclude Include="..\gsim\gs_vec.h" />
     <ClInclude Include="..\gsim\stb_image.h" />
     <ClInclude Include="..\gsim\stb_image_write.h" />
+    <ClInclude Include="..\menu.h" />
+    <ClInclude Include="..\MyCode.h" />
     <ClInclude Include="..\ogl_tools.h" />
+    <ClInclude Include="..\runnyboi.h" />
+    <ClInclude Include="..\RunnyBoiAndBadDudes.h" />
+    <ClInclude Include="..\Scoreboard.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\flat.frag" />
